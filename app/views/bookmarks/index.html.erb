@@ -30,4 +30,6 @@
 
 <br>
 
+<%= pie_chart Bookmark.group(:type_id.name).count %>
+
 <%= link_to 'New Bookmark', new_bookmark_path %>
