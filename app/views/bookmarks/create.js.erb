@@ -1,0 +1,19 @@
+var table = document.querySelector('table#bookmarks tbody')
+var tr = document.createElement('tr')
+tr.dataset.id = <%= @bookmark.id %>
+var bookmark = '<%= j render "bookmark", bookmark: @bookmark %>'
+
+tr.innerHTML = bookmark
+table.appendChild(tr)
+
+var name_input = document.querySelector('[name="bookmark[name]"]')
+name_input.value = ''
+
+var url_input = document.querySelector('[name="bookmark[url]"]')
+url_input.value = ''
+
+var select_category_input = document.querySelector('[name="bookmark[category_id]"]')
+select_category_input.selectedIndex = -1
+
+var select_type_input = document.querySelector('[name="bookmark[type_id]"]')
+select_type_input.selectedIndex = -1

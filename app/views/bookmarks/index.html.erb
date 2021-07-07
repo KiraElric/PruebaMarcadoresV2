@@ -2,27 +2,23 @@
 
 <h1>Bookmarks</h1>
 
-<table>
+<%= render 'form', bookmark: @bookmark %>
+
+<div id="detail_bookmark"></div>
+
+<table id="bookmarks">
   <thead>
     <tr>
       <th>Name</th>
       <th>Url</th>
-      <th>Category</th>
-      <th>Type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td><%= bookmark.name %></td>
-        <td><%= bookmark.url %></td>
-        <td><%= bookmark.category_name %></td>
-        <td><%= bookmark.type_name %></td>
-        <td><%= link_to 'Show', bookmark %></td>
-        <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr data-id="<%= bookmark.id %>">
+        <%= render 'bookmark', bookmark: bookmark %>
       </tr>
     <% end %>
   </tbody>
@@ -30,7 +26,7 @@
 
 <br>
 
-<%= pie_chart @bookmark_group %>
+<%= pie_chart @bookmark_group, legend: "bottom" %>
 
 <%= link_to 'Category', categories_path %><br>
 <%= link_to 'Type', types_path %>

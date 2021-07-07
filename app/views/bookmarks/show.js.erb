@@ -1,0 +1,9 @@
+var detail = document.querySelector('#detail_bookmark')
+detail.innerHTML = '<p><strong>Name:</strong> <%= @bookmark.name %></p>'
+detail.innerHTML += '<p><strong>Url:</strong> <%= @bookmark.url %></p>'
+detail.innerHTML += '<p><strong>Category:</strong> <%= @bookmark.category_name %></p>'
+detail.innerHTML += '<p><strong>Type:</strong> <%= @bookmark.type_name %></p>'
+
+setTimeout(function(){
+  detail.innerHTML = ''
+}, 10000)

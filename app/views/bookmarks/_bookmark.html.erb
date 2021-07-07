@@ -1,0 +1,5 @@
+<td><%= bookmark.name %></td>
+<td><%= bookmark.url %></td>
+<td><%= link_to 'Show', bookmark, remote: true %></td>
+<td><%= link_to 'Edit', edit_bookmark_path(bookmark), remote: true %></td>
+<td><%= link_to 'Destroy', bookmark, method: :delete, data: {remote: true, confirm: 'Are you sure?' } %></td>

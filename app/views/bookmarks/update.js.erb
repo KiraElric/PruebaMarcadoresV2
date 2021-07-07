@@ -1,0 +1,6 @@
+var detail = document.querySelector('#detail_bookmark')
+
+var tr_bookmark = document.querySelector('tr[data-id="<%= @bookmark.id %>"]')
+tr_bookmark.innerHTML = '<%= j render "bookmark", bookmark: @bookmark %>'
+
+detail.innerHTML = ''
