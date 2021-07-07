@@ -5,7 +5,8 @@ class BookmarksController < ApplicationController
   # GET /bookmarks or /bookmarks.json
   def index
     @bookmarks = Bookmark.all
-    @bookmark_group = Bookmark.group(:type_id.name).count
+    @bookmark_group = Bookmark.group(:type_id).count.transform_keys {|key| Type.find(key).name}
+    
   end
 
   # GET /bookmarks/1 or /bookmarks/1.json
@@ -57,6 +58,8 @@ class BookmarksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

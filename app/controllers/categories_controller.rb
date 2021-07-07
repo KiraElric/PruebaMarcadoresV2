@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[ show edit update destroy api_details ]
   before_action :set_parent_category, only: %i[ new edit index ]
   
   # GET /categories or /categories.json
@@ -66,6 +66,12 @@ class CategoriesController < ApplicationController
       format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
       format.json { head :no_content }
       format.js
+    end
+  end
+
+  def api_details
+    respond_to do |format|
+      format.json { render :show, status: :ok, location: @category }
     end
   end
 
