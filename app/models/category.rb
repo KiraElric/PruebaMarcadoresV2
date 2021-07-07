@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  has_many :bookmarks
+  has_many :bookmarks,  dependent: :destroy
   validates :name, presence: true
 
   def parent_category_name
