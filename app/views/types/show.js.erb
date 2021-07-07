@@ -1,2 +1,6 @@
 var detail = document.querySelector('#detail_type')
 detail.innerHTML = '<p><strong>Name:</strong> <%= @type.name %></p>'
+
+setTimeout(function(){
+  detail.innerHTML = ''
+}, 10000)

@@ -1,0 +1,13 @@
+var table = document.querySelector('table#categories tbody')
+var tr = document.createElement('tr')
+tr.dataset.id = <%= @category.id %>
+var category = '<%= j render "category", category: @category %>'
+
+tr.innerHTML = category
+table.appendChild(tr)
+
+var name_input = document.querySelector('[name="category[name]"]')
+name_input.value = ''
+
+var select_input = document.querySelector('[name="category[parent_category]"]')
+select_input.selectedIndex = -1

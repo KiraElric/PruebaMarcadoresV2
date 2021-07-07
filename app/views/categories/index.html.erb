@@ -2,23 +2,22 @@
 
 <h1>Categories</h1>
 
-<table>
+<%= render 'form', category: @category %>
+
+<div id="detail_category"></div>
+
+<table id="categories">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Parent category</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.parent_category_name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr data-id="<%= category.id %>">
+        <%= render 'category', category: category %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,5 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'Type', types_path %><br>
+<%= link_to 'Bookmark', bookmarks_path %>

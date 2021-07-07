@@ -1,14 +1,18 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
-  before_action :set_parent_category, only: %i[ new edit ]
+  before_action :set_parent_category, only: %i[ new edit index ]
   
   # GET /categories or /categories.json
   def index
     @categories = Category.all
+    @category = Category.new
   end
 
   # GET /categories/1 or /categories/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /categories/new
@@ -18,16 +22,22 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
 
+    sleep 1
+
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: "Category was successfully created." }
         format.json { render :show, status: :created, location: @category }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -41,6 +51,7 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         format.html { redirect_to @category, notice: "Category was successfully updated." }
         format.json { render :show, status: :ok, location: @category }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -54,6 +65,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to categories_url, notice: "Category was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 

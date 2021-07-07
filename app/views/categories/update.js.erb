@@ -1,0 +1,6 @@
+var detail = document.querySelector('#detail_category')
+
+var tr_category = document.querySelector('tr[data-id="<%= @category.id %>"]')
+tr_category.innerHTML = '<%= j render "category", category: @category %>'
+
+detail.innerHTML = ''

@@ -1,0 +1,7 @@
+var detail = document.querySelector('#detail_category')
+detail.innerHTML = '<p><strong>Name:</strong> <%= @category.name %></p>'
+detail.innerHTML += '<p><strong>Parent category:</strong> <%= @category.parent_category_name %></p>'
+
+setTimeout(function(){
+  detail.innerHTML = ''
+}, 10000)
