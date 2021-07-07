@@ -1,5 +1,7 @@
 class Category < ApplicationRecord
   has_many :bookmarks,  dependent: :destroy
+  has_many :subcategories, class_name: "Category", foreign_key: "parent_category", dependent: :destroy
+  belongs_to :parent, class_name: "Category", optional: true
   validates :name, presence: true
 
   def parent_category_name
