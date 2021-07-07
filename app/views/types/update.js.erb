@@ -1,0 +1,6 @@
+var detail = document.querySelector('#detail_type')
+
+var tr_type = document.querySelector('tr[data-id="<%= @type.id %>"]')
+tr_type.innerHTML = '<%= j render "type", type: @type %>'
+
+detail.innerHTML = ''

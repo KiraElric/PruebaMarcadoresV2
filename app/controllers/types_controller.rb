@@ -9,6 +9,9 @@ class TypesController < ApplicationController
 
   # GET /types/1 or /types/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /types/new
@@ -18,16 +21,22 @@ class TypesController < ApplicationController
 
   # GET /types/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /types or /types.json
   def create
     @type = Type.new(type_params)
 
+    sleep 1
+
     respond_to do |format|
       if @type.save
         format.html { redirect_to @type, notice: "Type was successfully created." }
         format.json { render :show, status: :created, location: @type }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @type.errors, status: :unprocessable_entity }
@@ -41,6 +50,7 @@ class TypesController < ApplicationController
       if @type.update(type_params)
         format.html { redirect_to @type, notice: "Type was successfully updated." }
         format.json { render :show, status: :ok, location: @type }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @type.errors, status: :unprocessable_entity }
@@ -54,6 +64,7 @@ class TypesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to types_url, notice: "Type was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 

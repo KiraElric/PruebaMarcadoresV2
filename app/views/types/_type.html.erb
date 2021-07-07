@@ -1,0 +1,4 @@
+<td><%= type.name %></td>
+<td><%= link_to 'Show', type, remote: true %></td>
+<td><%= link_to 'Edit', edit_type_path(type), remote: true %></td>
+<td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?', remote: true } %></td>

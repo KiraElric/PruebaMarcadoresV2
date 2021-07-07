@@ -1,0 +1,10 @@
+var table = document.querySelector('table#types tbody')
+var tr = document.createElement('tr')
+tr.dataset.id = <%= @type.id %>
+var type = '<%= j render "type", type: @type %>'
+
+tr.innerHTML = type
+table.appendChild(tr)
+
+var name_input = document.querySelector('[name="type[name]"]')
+name_input.value = ''

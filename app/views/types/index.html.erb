@@ -4,7 +4,9 @@
 
 <%= render 'form', type: @type %>
 
-<table>
+<div id="detail_type"></div>
+
+<table id="types">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,11 +16,8 @@
 
   <tbody>
     <% @types.each do |type| %>
-      <tr>
-        <td><%= type.name %></td>
-        <td><%= link_to 'Show', type %></td>
-        <td><%= link_to 'Edit', edit_type_path(type) %></td>
-        <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr data-id="<%= type.id %>">
+      <%= render 'type', type: type %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,5 @@
 
 <br>
 
-<%= link_to 'New Type', new_type_path %>
+<%= link_to 'Category', categories_path %><br>
+<%= link_to 'Bookmark', bookmarks_path %>
