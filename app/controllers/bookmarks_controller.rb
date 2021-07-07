@@ -5,6 +5,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks or /bookmarks.json
   def index
     @bookmarks = Bookmark.all
+    @bookmark_group = Bookmark.group(:type_id.name).count
   end
 
   # GET /bookmarks/1 or /bookmarks/1.json
